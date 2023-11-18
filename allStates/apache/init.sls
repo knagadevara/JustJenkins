@@ -16,7 +16,7 @@ apache_message:
         - source: salt://templates/index.html.j2
         - user: www-data
         - group: www-data
-        - mode: 0644
+        - mode: "0644"
         - template: jinja
         - name : /var/www/html/index.html
 
