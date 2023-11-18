@@ -1,4 +1,3 @@
 qat:
-  'dev-web-app-*':
+  'qat-web-app-*':
     - apache
-    - server-motd
