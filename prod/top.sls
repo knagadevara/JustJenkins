@@ -1,7 +1,10 @@
 prod:
-  'web*':
-    - apache
+  'k8s-*':
     - server-motd
+    - web_admin
+
+  'k8s-mgr-*':
+    - apache
     - web_admin
 
 

@@ -1,4 +1,4 @@
 dev:
   'dev-web-app-*':
     - apache
-    - server-motd
+    - web_admin
