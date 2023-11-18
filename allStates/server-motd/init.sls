@@ -3,6 +3,6 @@ server_message:
         - source: salt://templates/motd.j2
         - user: root
         - group: root
-        - mode: 0644
+        - mode: "0644"
         - template: jinja
         - name : /etc/motd
