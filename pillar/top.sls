@@ -1,5 +1,7 @@
 prod:
-    "k8s*":
-        - default
-        - prod.web_admin
-        - prod.apache
+  '*':
+    - prod.default
+    - prod.ssh_users
+
+  "web-prd*":
+    - prod.apache
