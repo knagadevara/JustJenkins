@@ -1,12 +1,8 @@
 prod:
-  'k8s-*':
-    - server-motd
+  'k8s*':
     - web_admin
-
-  'k8s-mgr-*':
     - apache
-    - web_admin
-
+    - server-motd
 
 ## Defines an enviornment in Salt-Project, mandatory file for each Stack of states.
 ## Contains the Group-Names of Minions

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+    <h1>Installed by Salt-Project</h1>
+    <body>
+        <p>
+           Version: {{ salt['pillar.get']( 'app_version' , '1.0.0') }}
+           Server: {{ salt['pillar.get']('server_type' , 'UAT-Test' ) }}
+        </p>
+    </body>
+</html>`

@@ -1,19 +1,20 @@
-## This Salt state file will install Apache
+{# This Salt state file will install Apache #}
+{% set pkgnm = salt['pillar.get'](salt['grains.get']('os_family')).name %}
 
-install_apache:
+install_{{ pkgnm }}:
     pkg.installed:
         - install_recommends: True
         - pkgs:
-            - apache2
+            - {{ pkgnm }}
 
-start_apache:
+start_{{ pkgnm }}:
     service.running:
-        - name: apache2
+        - name: {{ pkgnm }}
         - enable: True
 
-apache_message:
+message_for_{{ pkgnm }}_server:
     file.managed:
-        - source: salt://templates/index.html.j2
+        - source: salt://templates/index.html.jinja
         - user: www-data
         - group: www-data
         - mode: "0644"
