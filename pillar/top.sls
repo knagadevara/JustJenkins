@@ -1,5 +1,5 @@
 prod:
     "k8s*":
+        - default
         - prod.web_admin
-        - prod.server-motd
         - prod.apache
