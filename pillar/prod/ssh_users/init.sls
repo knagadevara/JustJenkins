@@ -1,3 +1,7 @@
+prod_ssh_group:
+    name: wheel
+    system: True
+
 prod_ssh_user:
   knagdev:
     full_name: "Sai Karthik VN"

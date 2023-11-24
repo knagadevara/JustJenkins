@@ -13,6 +13,6 @@ vim:
     - name: {{ package_name.name }}
     - version: {{ package_name.version }}
     - fromrepo: {{ package_name.reponame }}
-    - allow_updates: {{ allow_updates }} 
+    - allow_updates: {{ allow_updates }}
 
 {% endfor %}

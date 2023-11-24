@@ -1,10 +1,13 @@
-{% set node_role =   [ salt['grains.get']('role')  , "_" ,"ssh_user" ] | join %}
+{% set node_role =   salt['grains.get']('role') %}
+{% set admin_user =   [ {{ node_role }} , "_" ,"ssh_user" ] | join %}
+{% set admin_group =   [ {{ node_role }} , "_" ,"ssh_group" ] | join %}
 {% for user, user_attributes in salt['pillar.get']( node_role ).items() %}
 
 {{ user }}_group:
   group.present:
-    - gid: {{ user_attributes.uid }}
-    - non_unique: True
+    - name: {{ admin_group.name }}
+    - system: {{ admin_group.system }}
+    - addusers: {{ user }}
 
 {{ user }}:
   user.present:
@@ -12,7 +15,7 @@
     - home: /home/{{ user }}
     - shell: {{ user_attributes.shell }}
     - uid: {{ user_attributes.uid }}
-    - gid: {{ user_attributes.uid }}
+    - gid_from_name: True
 
 web_admin_key_{{ user }}:
     ssh_auth.manage:
