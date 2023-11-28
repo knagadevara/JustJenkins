@@ -1,7 +1,7 @@
 prod:
-
   "web-prd*":
     - prod.apache
 
-  "RH-K8S*":
+  "RH-K8S-MGR*":
+    - prod.default
     - prod.k8s

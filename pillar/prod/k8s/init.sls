@@ -1,8 +1,6 @@
-{% set kube_version = "v1.28.4" %}
-{% set sys_arch = "arm64" %}
-{% set kube_dl_pth =  [ "https://dl.k8s.io/"  , {{ kube_version }} , "/bin/linux/" , {{ sys_arch }} , "/" ] | join %}
+kube_version: "v1.28.4"
 
-kube_core_path: {{ kube_dl_pth }}
+kube_dl_pth: "https://dl.k8s.io/"
 
 master:
   kube-controller-manager:

@@ -33,4 +33,4 @@ network_details:
     03:
       ip_addr: 192.168.64.11
       host_name: RH-K8S-WKR03-1921686411
-      
+
