@@ -13,7 +13,7 @@ master:
     hash: a13001593c8cfdfa3896f54267fd778a944ac6a6d41aff53b672b9f118aa4112
 
   apiextensions-apiserver:
-    hash: f3984fa941c27930428b3fd3c9a5397e61fdf1e87b8c12c2ee4df9179427ac6f
+    hash: dd6c2ee893f99e20a7f34f8b1017f5534a15d59772d67d4e7648e814c9cd8e9e
 
   kube-aggregator:
     hash: 7d817fe7368dd8dd0d7b00e968ff4e6808d3ddf591535b2c1c25c4316259a0b4

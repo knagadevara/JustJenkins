@@ -1,7 +1,12 @@
 prod:
-
+  '*':
+    - installPackage
+    
   'web-prd*':
     - apache
+
+  "RH-K8S*":
+    - k8s.default
 
   "RH-K8S-MGR*":
     - k8s.master

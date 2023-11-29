@@ -1,4 +1,7 @@
 prod:
+  "*":
+    - prod.packages
+    
   "web-prd*":
     - prod.apache
 
