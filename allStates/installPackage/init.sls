@@ -1,12 +1,13 @@
-{% set osfamily_root = [ salt['grains.get']('role') , "." , salt['grains.get']('os_family') ] | join %}
-
-vim:
+{% set osfamily = salt['grains.get']('os_family')  %}
+{% set osfamily_root = [ osfamily , "."  , "default_packages" ] | join %}
+{% set allow_updates = [ osfamily , "."  , "allow_updates" ] | join %}
+tar:
   pkg.installed:
     - refresh: true
     - pkg_verify: true
 
-{% set allow_updates = salt['pillar.get'](osfamily_root.allow_updates) %}
-{% for distro_type, package_name in salt['pillar.get'](osfamily_root).items() %}
+{% set allow_updates = salt['pillar.get']( osfamily_root) %}
+{% for distro_type, package_name in salt['pillar.get'](osfamily_root) %}
 
 {{ distro_type }}_repo:
   pkgrepo.installed:
