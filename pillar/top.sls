@@ -5,3 +5,4 @@ prod:
   "RH-K8S-MGR*":
     - prod.default
     - prod.k8s
+    - prod.etcd

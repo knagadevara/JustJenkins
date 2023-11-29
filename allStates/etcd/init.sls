@@ -1,6 +1,6 @@
-{% set pkg_dtls = salt["pillar.get"]("ketcd") %}
-download_{{ pkg_dtls }}:
+{% set attr = salt["pillar.get"]("ketcd") %}
+download_{{ attr.name }}:
   archive.extracted:
-    - name: {{ pkg_dtls }}.name
-    - source: {{ pkg_dtls }}.source
-    - source_hash: {{ pkg_dtls }}.hash
+    - name: {{ attr.name }}
+    - source: {{ attr.source }}
+    - source_hash: {{ attr.hash }}
