@@ -1,6 +1,7 @@
 prod:
   '*':
     - installPackage
+    - hosts_file
     
   'web-prd*':
     - apache

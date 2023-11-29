@@ -9,12 +9,13 @@ download_{{ attr.name }}:
     - source_hash: {{ attr.hash }}
     - archive_format: tar
 
-rename_{{ attr.name }}:
+copy_{{ attr.name }}:
   file.copy:
     - name: {{ [ dl_pth , "etcd" ] | join }}
     - source: {{ [ dl_pth , attr.name , "/etcd" ] | join }}
 
-
 delete_{{ attr.name }}:
   file.absent:
     - name: {{ [ dl_pth , attr.name ] | join }}
+    - require:
+      - file: {{ [ dl_pth ,  "etcd" ] | join }}

@@ -1,8 +1,10 @@
+{%- block unit -%}
 [Unit]
-Description= {{ package_name }}
 Wants=network-online.target
 After=network-online.target
+{%- endblock  -%}
 
+{%- block service -%}
 [Service]
 Type=notify
 LimitNOFILE=40000
@@ -11,9 +13,10 @@ TasksMax=infinity
 OOMScoreAdjust=-999
 RestartSec=5s
 Restart=always
-Execstart={{ [ dl_pth , package_name ] | join }} \\
-{{ package_val.service_unit_file }}
 ExecReload=/bin/kill -s HUP $MAINPID
+{%- endblock  -%}
 
+{%- block install -%}
 [Install]
 WantedBy=multi-user.target
+{%- endblock  -%}
