@@ -4,7 +4,10 @@ kube_dl_pth: "https://dl.k8s.io/"
 
 master:
   kube-controller-manager:
-    hash: a6c1e82431b6e9b045a8feb713fc14a4a6fa168a3d3edf91c63a496c8bcd0133
+    hash: "a6c1e82431b6e9b045a8feb713fc14a4a6fa168a3d3edf91c63a496c8bcd0133"
+    service_unit_file:
+      |
+      test
 
   kube-apiserver:
     hash: ad57ac6e7fea9ef8f5de172b9984795d91d4353ea1badf3883161e9a8fdeda58
