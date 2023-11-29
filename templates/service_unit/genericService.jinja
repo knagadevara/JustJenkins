@@ -1,0 +1,19 @@
+[Unit]
+Description= {{ package_name }}
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+LimitNOFILE=40000
+TimeoutStartSec=0
+TasksMax=infinity
+OOMScoreAdjust=-999
+RestartSec=5s
+Restart=always
+Execstart={{ [ dl_pth , package_name ] | join }} \\
+{{ package_val.service_unit_file }}
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
