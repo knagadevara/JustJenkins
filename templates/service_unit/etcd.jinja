@@ -1,0 +1,14 @@
+{%- extends "genericService.jinja" -%}
+{%- block unit -%}
+{{ super() }}
+ExecStart=/srv/kubernetes/etcd \\
+--name 
+{%- endblock  -%}
+
+{%- block service -%}
+{{ super() }}
+{%- endblock  -%}
+
+{%- block install -%}
+{{ super() }}
+{%- endblock  -%}
