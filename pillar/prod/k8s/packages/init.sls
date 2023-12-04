@@ -2,7 +2,8 @@ kube_version: "v1.28.4"
 
 kube_dl_pth: "https://dl.k8s.io/"
 
-master:
+k8s_packages:
+
   kube-controller-manager:
     hash: "a6c1e82431b6e9b045a8feb713fc14a4a6fa168a3d3edf91c63a496c8bcd0133"
 
@@ -18,7 +19,6 @@ master:
   kube-aggregator:
     hash: 7d817fe7368dd8dd0d7b00e968ff4e6808d3ddf591535b2c1c25c4316259a0b4
 
-common:
   kubectl:
     hash: edf1e17b41891ec15d59dd3cc62bcd2cdce4b0fd9c2ee058b0967b17534457d7
 
