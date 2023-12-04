@@ -9,6 +9,6 @@ download_{{ package_name }}:
     - source:   {{ [ kcore_pth , package_name ] | join }}
     - user: root
     - group: root
-    - mode: "0755"
+    - mode: "0775"
     - source_hash: {{ package_val.hash }}
 {%- endfor -%}

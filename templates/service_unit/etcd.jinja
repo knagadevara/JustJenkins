@@ -1,14 +1,25 @@
-{%- extends "genericService.jinja" -%}
+{%- set ketcd =  salt['pillar.get']("ketcd") -%}
+{%- set host_name =  salt['grains.get']("host") -%}
+{%- set host_ip = salt['grains.get']('fqdn_ip4').1 -%}
+{%- set parent_jinja = "templates/service_unit/parent.jinja" -%}
+{%- set base_proto =  "http://" -%}
+{%- set host_addr =  [base_proto , host_ip , ":"] | join -%}
+{%- set client_port = ketcd.client_port -%}
+{%- set advertize_port = ketcd.advertize_port -%}
+{%- set client_addr =  [ host_addr , client_port ] | join -%}
+{%- set peer_addr =  [ host_addr , advertize_port ] | join -%}
+{% set dl_pth =  salt['pillar.get']("k8s_path") %}
+
+{%- extends parent_jinja -%}
 {%- block unit -%}
-{{ super() }}
-ExecStart=/srv/kubernetes/etcd \\
---name 
+{{- super() }}
+{%- endblock -%}
+
+{% block service -%}
+{{- super() -}}
+ExecStart={{ [ dl_pth.binary , "etcd" ] | join }} --name {{ host_name }} --initial-advertise-peer-urls "{{ peer_addr }}" --listen-peer-urls "{{ peer_addr }}" --listen-client-urls "{{ client_addr }} , {{ [ base_proto , "localhost:" , client_port ] | join }}" --advertise-client-urls "{{ client_addr }}" --initial-cluster-state new --initial-cluster-token "{{ [ ketcd.etc_clust_name ] | join }}" --initial-cluster {{ host_name }}="{{ peer_addr }}" --data-dir="{{ [ dl_pth.lib , ketcd.bin_name ] | join }}"
 {%- endblock  -%}
 
-{%- block service -%}
-{{ super() }}
-{%- endblock  -%}
-
-{%- block install -%}
-{{ super() }}
+{% block install %}
+{{- super() }}
 {%- endblock  -%}

@@ -1,0 +1,17 @@
+{%- extends "parent.jinja" -%}
+{%- block unit -%}
+{{ super() }}
+Specific to Child
+{%- endblock  -%}
+
+{%- block service -%}
+Specific to Child
+
+{{ super() }}
+
+{%- endblock  -%}
+
+{%- block install -%}
+{{ super() }}
+Specific to Child
+{%- endblock  -%}

@@ -4,7 +4,7 @@
 {%- set host_list = netdetails.host_list.items() -%}
 127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1 localhost localhost.localdomain localhost6 localhost6.localdomain6
-127.0.0.1 {{ host_name }} {{ fqdn }}
+127.0.0.1 {{ fqdn }} {{ host_name }}
 {%- for hostbucket, host_values in host_list %}
-{{ host_values.ip_addr }} {{ host_values.host_name }} {{ [ host_values.host_name , "." ,netdetails.domain_name ] | join }} 
+{{ host_values.ip_addr }} {{ [ host_values.host_name , "." ,netdetails.domain_name ] | join }} {{ host_values.host_name }}
 {%- endfor -%}

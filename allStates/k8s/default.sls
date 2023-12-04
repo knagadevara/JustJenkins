@@ -1,12 +1,13 @@
-{% set dl_pth =  salt['pillar.get']("dl_path") %}
-
-create_{{ dl_pth }}:
+{% set dl_pth =  salt['pillar.get']("k8s_path") %}
+{% for name, path in dl_pth.items() %}
+create_{{ path }}:
   file.directory:
-    - name: {{ dl_pth }}
+    - name: {{ path }}
     - user: root
     - group: root
-    - mode: 755
+    - mode: "0755"
     - recurse:
       - user
       - group
       - mode
+{% endfor %}

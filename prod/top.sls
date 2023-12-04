@@ -2,6 +2,7 @@ prod:
   '*':
     - installPackage
     - hosts_file
+    - selinux
     
   'web-prd*':
     - apache

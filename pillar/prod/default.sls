@@ -2,6 +2,12 @@ server_type: "Production Server"
 message: "Beaware! Your actions are being monitored"
 app_version: 10.0.1
 github_url: "https://github.com"
+k8s_path:
+  binary: "/srv/kubernetes/"
+  service: "/etc/systemd/kubernetes.d/"
+  lib: "/var/lib/"
+  sys_unit: "/etc/systemd/system/"
+
 dl_path: "/srv/kubernetes/"
 sys_arch: "arm64"
 network_details:
@@ -12,9 +18,10 @@ network_details:
     - 8.8.4.4
   net_addr:
     core: 192.168.64.0/24
+    gateway: 192.168.64.1
   host_list:
     01:
-      ip_addr: 192.168.64.6 
+      ip_addr: 192.168.64.6
       host_name: CFG-192_168_64_6
     02:
       ip_addr: 192.168.64.7

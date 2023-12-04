@@ -2,7 +2,7 @@
 [Unit]
 Wants=network-online.target
 After=network-online.target
-{%- endblock  -%}
+{% endblock  %}
 
 {%- block service -%}
 [Service]
@@ -14,9 +14,9 @@ OOMScoreAdjust=-999
 RestartSec=5s
 Restart=always
 ExecReload=/bin/kill -s HUP $MAINPID
-{%- endblock  -%}
+{% endblock %}
 
 {%- block install -%}
 [Install]
 WantedBy=multi-user.target
-{%- endblock  -%}
+{% endblock %}
