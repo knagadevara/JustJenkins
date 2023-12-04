@@ -10,6 +10,7 @@ prod:
   "RH-K8S*":
     - k8s.default
     - k8s.download
+    - network_setup.add_route
 
   "RH-K8S-MGR*":
     - etcd

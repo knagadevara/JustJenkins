@@ -19,8 +19,8 @@ Description="ETCd v:3.5.0 doc:https://etcd.io/docs"
 {% block service -%}
 {{- super() -}}
 ExecStart={{ [ dl_pth.binary , "etcd" ] | join }} --name {{ host_name }} --initial-advertise-peer-urls "{{ peer_addr }}" --listen-peer-urls "{{ peer_addr }}" --listen-client-urls "{{ client_addr }} , {{ [ base_proto , "localhost:" , client_port ] | join }}" --advertise-client-urls "{{ client_addr }}" --initial-cluster-state new --initial-cluster-token "{{ [ ketcd.etc_clust_name ] | join }}" --initial-cluster {{ host_name }}="{{ peer_addr }}" --data-dir="{{ [ dl_pth.lib , ketcd.bin_name ] | join }}"
-{%- endblock  -%}
+{%- endblock %}
 
-{% block install %}
+{% block install -%}
 {{- super() }}
 {%- endblock  -%}

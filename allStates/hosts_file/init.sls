@@ -30,7 +30,3 @@
     - user: root
     - group: root
     - mode: "0644"
-
-# add_route:
-#   cmd.run:
-#     - name: {{ [ "ip route add " , dname.net_addr.core , "  via  " , dname.net_addr.gateway ] | join }}  
