@@ -1,3 +1,4 @@
+{%- set ketcd =  salt['pillar.get']("ketcd") -%}
 {%- set host_name =  salt['grains.get']("host") -%}
 {%- set host_ip = salt['grains.get']('ipv4').1 -%}
 {%- set parent_jinja = "templates/service_unit/parent.jinja" -%}
@@ -5,8 +6,6 @@
 {%- set host_addr =  [base_proto , host_ip , ":"] | join -%}
 {%- set client_port = ketcd.client_port -%}
 {%- set advertize_port = ketcd.advertize_port -%}
-{%- set client_addr =  [ host_addr , client_port ] | join -%}
-{%- set peer_addr =  [ host_addr , advertize_port ] | join -%}
 {% set dl_pth =  salt['pillar.get']("k8s_path") %}
 
 {%- extends parent_jinja -%}
@@ -19,6 +18,12 @@ Description="ETCd v:3.5.0 doc:https://etcd.io/docs"
 {{- super() -}}
 ExecStart={{ [ dl_pth.binary , "kube-apiserver" ] | join }} 
 --advertise-address="{{ peer_addr }}" 
+--allow-privileged=true
+--apiserver-count=1
+--authorization-mode=Node,RBAC
+--bind-address=0.0.0.0
+--enable-swagger-ui=true
+--etcd-servers=http://127.0.0.1:
 --name {{ host_name }} 
 --listen-peer-urls "{{ peer_addr }}" 
 --listen-client-urls "{{ client_addr }} , {{ [ base_proto , "localhost:" , client_port ] | join }}" 

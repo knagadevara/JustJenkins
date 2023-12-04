@@ -1,6 +1,6 @@
 {%- set ketcd =  salt['pillar.get']("ketcd") -%}
 {%- set host_name =  salt['grains.get']("host") -%}
-{%- set host_ip = salt['grains.get']('fqdn_ip4').1 -%}
+{%- set host_ip = salt['grains.get']('ipv4').1 -%}
 {%- set parent_jinja = "templates/service_unit/parent.jinja" -%}
 {%- set base_proto =  "http://" -%}
 {%- set host_addr =  [base_proto , host_ip , ":"] | join -%}
