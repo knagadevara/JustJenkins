@@ -1,6 +1,6 @@
 {%- set ketcd =  salt['pillar.get']("ketcd") -%}
 {%- set host_name =  salt['grains.get']("host") -%}
-{%- set host_ip = salt['grains.get']('fqdn_ip4').1 -%}
+{%- set host_ip = salt['grains.get']('ipv4').1 -%}
 {%- set parent_jinja = "templates/service_unit/parent.jinja" -%}
 {%- set base_proto =  "http://" -%}
 {%- set host_addr =  [base_proto , host_ip , ":"] | join -%}
@@ -18,8 +18,8 @@
 {% block service -%}
 {{- super() -}}
 ExecStart={{ [ dl_pth.binary , "etcd" ] | join }} --name {{ host_name }} --initial-advertise-peer-urls "{{ peer_addr }}" --listen-peer-urls "{{ peer_addr }}" --listen-client-urls "{{ client_addr }} , {{ [ base_proto , "localhost:" , client_port ] | join }}" --advertise-client-urls "{{ client_addr }}" --initial-cluster-state new --initial-cluster-token "{{ [ ketcd.etc_clust_name ] | join }}" --initial-cluster {{ host_name }}="{{ peer_addr }}" --data-dir="{{ [ dl_pth.lib , ketcd.bin_name ] | join }}"
-{%- endblock  -%}
+{%- endblock %}
 
-{% block install %}
+{% block install -%}
 {{- super() }}
 {%- endblock  -%}
