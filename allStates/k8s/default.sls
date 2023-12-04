@@ -9,5 +9,4 @@ create_{{ path }}:
     - recurse:
       - user
       - group
-      - mode
 {% endfor %}

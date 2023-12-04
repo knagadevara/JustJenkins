@@ -7,8 +7,8 @@ prod:
     - prod.apache
 
   "RH-K8S*":
-    - prod.k8s.default
     - prod.k8s.packages
+    - prod.k8s.default
 
   "RH-K8S-MGR*":
     - prod.etcd
