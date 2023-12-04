@@ -10,8 +10,9 @@ network_details:
     - 8.8.8.8
     - 8.8.4.4
   net_addr:
-    core: 192.168.64.0/24
+    pool_addr: 192.168.64.0
     gateway: 192.168.64.1
+    mask: 255.255.255.0
   host_list:
     01:
       ip_addr: 192.168.64.6
